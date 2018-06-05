@@ -34,6 +34,19 @@ public class App {
             return new ModelAndView(model, "animalslist.hbs");
         }, new HandlebarsTemplateEngine());
 
+        get("/animals/type", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String type = request.queryParams("type");
+            List<Animal> animals;
+            if(type.equals("all")){
+                animals = animalDao.getAll();
+            }else{
+                animals = animalDao.findByType(type);
+            }
+            model.put("animals", animals);
+            return new ModelAndView(model, "animalslist.hbs");
+        }, new HandlebarsTemplateEngine());
+
         get("/animals/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "animal-form.hbs");

@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
@@ -41,7 +43,7 @@ public class Sql2oAnimalDaoTest {
     }
 
     @Test
-    public void addedAnimalsAreReturnedFromgetAll() throws Exception {
+    public void addedAnimalsAreReturnedFromGetAll() throws Exception {
         Animal animal = setupNewAnimal();
         animalDao.add(animal);
         assertEquals(1, animalDao.getAll().size());
@@ -95,5 +97,15 @@ public class Sql2oAnimalDaoTest {
         int daoSize = animalDao.getAll().size();
         animalDao.clearAllAnimals();
         assertTrue(daoSize > 0 && daoSize > animalDao.getAll().size()); //this is a little overcomplicated, but illustrates well how we might use `assertTrue` in a different way.
+    }
+
+    @Test
+    public void findByTypeReturnsAnimalsOfType() {
+        Animal animal = setupNewAnimal();
+        Animal otherAnimal = new Animal("fluffy", "female", "cat", "siamese");
+        animalDao.add(animal);
+        animalDao.add(otherAnimal);
+        List<Animal> dogs = animalDao.findByType("dog");
+        assertEquals(1, dogs.size());
     }
 }

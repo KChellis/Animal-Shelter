@@ -12,6 +12,7 @@ public interface AnimalDao {
 
     // READ
     Animal findById(int id);
+    List<Animal> findByType(String type);
 
     //UPDATE
     void update(int id, String name, String gender, String type, String breed);

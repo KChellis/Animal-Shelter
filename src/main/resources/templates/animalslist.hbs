@@ -1,5 +1,14 @@
 {{#partial "content"}}
     <h2>Animals:</h2>
+    <form action="/animals/type" method="get">
+        <label for="type">Sort by type:</label>
+        <select name="type" id="type">
+            <option value="all">All</option>
+            <option value="cat">Cats</option>
+            <option value="dog">Dogs</option>
+        </select>
+        <button type="submit" class="btn btn-info">Sort</button>
+    </form>
     {{#if animals}}
         <ul>
             {{#each animals}}

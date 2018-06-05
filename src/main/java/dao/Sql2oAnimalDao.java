@@ -5,6 +5,8 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Sql2oAnimalDao implements AnimalDao {
@@ -43,6 +45,15 @@ public class Sql2oAnimalDao implements AnimalDao {
             return con.createQuery("SELECT * FROM animals WHERE id = :id")
                     .addParameter("id", id) //key/value pair, key must match above
                     .executeAndFetchFirst(Animal.class); //fetch an individual item
+        }
+    }
+
+    @Override
+    public List<Animal> findByType(String type) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM animals WHERE type = :type")
+                    .addParameter("type", type) //key/value pair, key must match above
+                    .executeAndFetch(Animal.class); //fetch an individual item
         }
     }
 
