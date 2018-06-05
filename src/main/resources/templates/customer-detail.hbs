@@ -1,0 +1,12 @@
+{{#partial "content"}}
+    <h2>{{customer.name}}</h2>
+    <h4>Phone: {{customer.phone}}</h4>
+    <h4>Type preference: {{customer.type}}</h4>
+    <h4>Breed preference: {{customer.breed}}</h4>
+
+    <a href="/customers/{{customer.id}}/edit">Edit</a>
+    <a href="/customers/{{customer.id}}/delete">Delete</a>
+
+{{/partial}}
+
+{{> layout.hbs}}

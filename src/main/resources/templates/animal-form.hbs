@@ -1,0 +1,43 @@
+{{#partial "content"}}
+    {{#if animal}}
+        <form action="/animals/{{animal.id}}/edit" method="post">
+            <label for="name">Edit pet name</label>
+            <input type="text" name="name" id="name" value="{{animal.name}}"><br>
+            <label for="gender">Edit the animal's gender:</label>
+            <select name="gender" id="gender">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+            </select><br>
+            <label for="type">Edit type of animal:</label>
+            <select name="type" id="type">
+                <option value="Cat">Cat</option>
+                <option value="Dog">Dog</option>
+            </select><br>
+            <label for="breed">Edit breed:</label>
+            <input type="text" name="breed" id="breed" value="{{animal.breed}}"><br>
+            <button type="submit" class="btn btn-info">Update</button>
+        </form>
+    {{else}}
+        <h2>Add an Animal:</h2>
+        <form action="/animals/new" method="post">
+            <label for="name">Enter pet name</label>
+            <input type="text" name="name" id="name"><br>
+            <label for="gender">What is the animal's gender</label>
+            <select name="gender" id="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select><br>
+            <label for="type">What type of animal is it?</label>
+            <select name="type" id="type">
+                <option value="cat">Cat</option>
+                <option value="dog">Dog</option>
+            </select><br>
+            <label for="breed">What is its breed?</label>
+            <input type="text" name="breed" id="breed"><br>
+            <button type="submit" class="btn btn-info">Add</button>
+        </form>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

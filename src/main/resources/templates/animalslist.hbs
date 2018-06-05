@@ -1,0 +1,17 @@
+{{#partial "content"}}
+    <h2>Animals:</h2>
+    {{#if animals}}
+        <ul>
+            {{#each animals}}
+                <li>{{#if ownerId }}Adopted{{/if}}  {{name}} <a href="/animals/{{id}}">Details</a>  <a href="/animals/{{id}}/delete">Delete</a></li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <h4>No animals to display</h4>
+    {{/if}}
+
+    <a href="/animals/new">Add an animal</a>
+
+{{/partial}}
+
+{{> layout.hbs}}

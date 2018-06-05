@@ -1,0 +1,16 @@
+{{#partial "content"}}
+    {{#if animal.ownerId}}
+        <h2>This animal has been adopted</h2>
+    {{/if}}
+    <h2>{{animal.name}}</h2>
+    <h4>Gender: {{animal.gender}}</h4>
+    <h4>Type: {{animal.type}}</h4>
+    <h4>Breed: {{animal.breed}}</h4>
+
+    <a href="/animals/{{animal.id}}/adopt">Adopt</a>
+    <a href="/animals/{{animal.id}}/edit">Edit</a>
+    <a href="/animals/{{animal.id}}/delete">Delete</a>
+
+{{/partial}}
+
+{{> layout.hbs}}

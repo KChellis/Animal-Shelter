@@ -1,0 +1,17 @@
+{{#partial "content"}}
+    <h2>Customers:</h2>
+    {{#if customers}}
+        <ul>
+            {{#each customers}}
+                <li>{{name}} <a href="/customers/{{id}}">Details</a>  <a href="/customers/{{id}}/delete">Delete</a></li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <h4>No customers to display</h4>
+    {{/if}}
+
+    <a href="/customers/new">Add a customer</a>
+
+{{/partial}}
+
+{{> layout.hbs}}

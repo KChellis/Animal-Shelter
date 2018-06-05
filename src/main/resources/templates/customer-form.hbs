@@ -1,0 +1,37 @@
+{{#partial "content"}}
+    {{#if customer}}
+        <form action="/customers/{{customer.id}}/edit" method="post">
+            <label for="name">Edit customer name</label>
+            <input type="text" name="name" id="name" value="{{customer.name}}"><br>
+            <label for="phone">Edit phone:</label>
+            <input type="text" name="phone" id="phone" value="{{customer.phone}}"><br>
+            <label for="type">Edit preferred pet type:</label>
+            <select name="type" id="type">
+                <option value="Cat">Cat</option>
+                <option value="Dog">Dog</option>
+            </select><br>
+            <label for="breed">Edit preferred pet breed:</label>
+            <input type="text" name="breed" id="breed" value="{{customer.breed}}"><br>
+            <button type="submit" class="btn btn-info">Update</button>
+        </form>
+    {{else}}
+        <h2>Add an Customer:</h2>
+        <form action="/customers/new" method="post">
+            <label for="name">Enter customer name</label>
+            <input type="text" name="name" id="name"><br>
+            <label for="phone">What is the customer's phone number?</label>
+            <input type="text" name="phone" id="phone" value="{{customer.phone}}"><br>
+            <label for="type">What type of pet is preferred?</label>
+            <select name="type" id="type">
+                <option value="cat">Cat</option>
+                <option value="dog">Dog</option>
+            </select><br>
+            <label for="breed">What breed is preferred?</label>
+            <input type="text" name="breed" id="breed"><br>
+            <button type="submit" class="btn btn-info">Add</button>
+        </form>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

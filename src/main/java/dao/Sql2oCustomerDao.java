@@ -16,7 +16,7 @@ public class Sql2oCustomerDao implements CustomerDao {
 
     @Override
     public void add(Customer customer) {
-        String sql = "INSERT INTO customers (name) VALUES (:name)"; //raw sql
+        String sql = "INSERT INTO customers (name, phone, type, breed) VALUES (:name, :phone, :type, :breed)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql, true) //make a new variable
                     .bind(customer) //map my argument onto the query so we can use information from it

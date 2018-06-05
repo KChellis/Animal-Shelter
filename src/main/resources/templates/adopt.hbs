@@ -1,0 +1,14 @@
+{{#partial "content"}}
+    <form action="/animals/{{animal.id}}/adopt" method="post">
+        <label for="owner">Select new owner</label>
+        <select name="owner" id="owner">
+            {{#each customers}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </select><br>
+        <button type="submit">Adopt!</button>
+    </form>
+
+{{/partial}}
+
+{{> layout.hbs}}
